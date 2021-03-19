@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.zhy</groupId>
+    <artifactId>dubbo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>api</module>
+        <module>privider</module>
+        <module>consumer</module>
+    </modules>
+
+    <!--设置打包类型为pom,作用是为了实现多模块-->
+    <packaging>pom</packaging>
+
+    <!--添加spring-boot的parent-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <version> 2.3.2.RELEASE</version>
+        <artifactId>spring-boot-starter-parent</artifactId>
+    </parent>
+
+    <!--设置版本属性-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <dubbo.version>2.5.3</dubbo.version>
+    </properties>
+
+    <!--声明依赖管理-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version> 2.3.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version> 2.3.2.RELEASE</version>
+        </dependency>
+        <!-- 使用lombok实现JavaBean的get、set、toString、hashCode、equals等方法的自动生成  -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version> 1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--dubbo依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+        <!--zk client-->
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+    </dependencies>
+</project>
