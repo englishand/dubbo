@@ -12,9 +12,12 @@
     <artifactId>api</artifactId>
 
     <dependencies>
+        <!-- 使用lombok实现JavaBean的get、set、toString、hashCode、equals等方法的自动生成  -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version> 1.18.12</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
