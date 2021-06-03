@@ -38,4 +38,16 @@ zookeeper搭建：
         修改配置文件对应地方为（注意一定是双\哦）：      
         dataDir=D:\\Zookeepertest\\zookeeper-3.4.6\\dataTmp
       3.启动项为：/bin/zkServer.cmd
-      
+#####dubbo和zookeeper关系
+    dubbo将注册中心进行抽象，使得它可以外接不同的存储媒介给注册中心提供服务，有zookeeper、memcached、redis等。
+    引入zookeeper作为存储媒介，也就是把Zookeeper的特性引进来了。1.负载均衡，但注册中心的承载能力有限，在流量达到一定程度时要进行分流，负载均衡就是
+    为分流而生的，一个zookeeper群配合响应的web应用就可以很容易达到负载均衡；2资源同步：单单有负载均衡还不够，节点之间的数据和资源需要同步，
+    zookeeper集群就天然具备这样的功能；3命名服务：将树状结构用于维护全局的服务地址列表，服务提供者在启动的时候，向zookeeper上指定的节点
+    /dubbo/${serviceName}/providers目录下写入自己的url地址，这个操作就完成了服务的发布。
+#####测试
+    1.先启动zookeeper注册中心，这里用了三个zookeeper做负载均衡，所以要启动三个，D:\Program Files\Zookeeper
+    2.启动dubbo admin做监控以及相关配置，如privider的权重配置,C:\tools\apache-tomcat-8.5.55\bin
+    3.启动服务提供者（有两个做负载均衡），一个本地使用dubbo协议在20880端口暴露服务地址，一个在tomcat（D:\Program Files\apache-tomcat-9.0.46）
+      使用dubbo协议在20881端口暴露服务地址。
+    4.启动消费者，在本地启动即可。
+          
